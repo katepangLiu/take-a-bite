@@ -16,10 +16,21 @@ renderer.setSize( window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const meterial = new THREE.MeshBasicMaterial( {color: 0xFF6347, wireframe: true} );
+const meterial = new THREE.MeshStandardMaterial( {color: 0xFF6347} );
 const torus = new THREE.Mesh( geometry, meterial);
 
 scene.add(torus);
+
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(20, 20, 20)
+scene.add(pointLight);
+
+const ambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(ambientLight);
+
+const lightHelper = new THREE.PointLightHelper(pointLight);
+const gridHelper = new THREE.GridHelper(200, 50);
+scene.add(lightHelper, gridHelper);
 
 function animate() {
   requestAnimationFrame( animate );
