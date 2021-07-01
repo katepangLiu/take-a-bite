@@ -74,6 +74,23 @@ const moon = new THREE.Mesh(
 );
 scene.add(moon);
 
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+
+  moon.rotateX( 0.75);
+  moon.rotateY( 0.75);
+  moon.rotateZ(0.75);
+
+  stuart.rotateX(0.01);
+  stuart.rotateY(0.01);
+
+  camera.position.z = t* -0.01;
+  camera.position.x = t* -0.0002;
+  camera.position.y = t* -0.0002;
+}
+
+document.body.onscroll = moveCamera;
+
 function animate() {
   requestAnimationFrame( animate );
 
