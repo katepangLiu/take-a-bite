@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Currency Exchange</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.querySelector('form').onsubmit = function () {
+                console.log('form submin.');
+
+                fetch('http://api.exchangeratesapi.io/v1/latest?access_key=c6c24bcd7bd207f8c47d5dc32ba26f67&format=1')
+                    .then(response => response.json())
+                    .then(data => {
+                        //console.log(data);
+                        //const rate = data.rates.EUR;
+
+                        const currency = document.querySelector('#currency').value;
+                        const rate = data.rates[currency];
+                        eResult = document.querySelector('#result');
+                        if (rate == !undefined) {
+                            eResult.innerHTML = `1 USD is equal to ${rate.toFixd(3)} ${currency}`;
+                        } else {
+                            eResult.innerHTML = 'Invalid currency.';
+                        }
+                    }).catch(error => {
+                        console.log(error);
+                    });
+
+                return false;
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+    <form>
+        <input id="currency" placeholder="Currency" type="text">
+        <input type="submit">
+    </form>
+    <div id='result'></div>
+</body>
+
+</html>
