@@ -1,2 +1,3 @@
-# take-a-bite
- take a bite in everything interesting.
+# Take a bite
+Find something interesting, and take a bite.
+
