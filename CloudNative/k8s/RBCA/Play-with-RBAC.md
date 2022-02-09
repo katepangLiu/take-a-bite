@@ -54,7 +54,7 @@ kubectl apply -f role-pod-reader.yaml
 kubectl create rolebinding podreader-binding --role=pod-reader --user=pang
 kubectl config use-context pang
 kubectl get pods
-kubectl get pods -A
+kubectl get pods -A #failed
 ```
 
 
@@ -66,6 +66,6 @@ kubectl create clusterrolebinding cluster-podreader-binding --clusterrole=cluste
 
 kubectl config use-context pang
 kubectl get pods
-kubectl get pods -A
+kubectl get pods -A #succeed
 ```
 
