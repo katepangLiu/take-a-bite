@@ -82,6 +82,17 @@ kubectl config set-context pang --cluster=kubernetes --user=pang
 
 ### kubectl with special user
 
+**switch kubectl context**
+
+```shell
+kubectl config use-context pang
+kubectl config use-context kubernetes-admin@kubernetes
+```
+
+
+
+**kubectl get pods with podreader role**
+
 ```shell
 kubectl create rolebinding podreader-binding --role=pod-reader --user=pang
 kubectl config use-context pang
@@ -90,6 +101,8 @@ kubectl get pods -A #Forbidden
 ```
 
 
+
+**kubectl get pods with cluster-podreader role**
 
 ```shell
 kubectl config use-context kubernetes-admin@kubernetes
@@ -172,16 +185,23 @@ CACERT=${SERVICEACCOUNT}/ca.crt
 
 ### API Accessing
 
+ **kubectl manage clusterrolebinding**
+
 ```shell
-# without binding clusterrole=cluster-pod-reader , 403
-curl --cacert ${CACERT} --header "Authorization: Bearer ${TOKEN}" -X GET ${APISERVER}/api/v1/pods
-
-# with binding clusterrole=cluster-pod-reader , 200
 kubectl create clusterrolebinding cluster-svc-podreader-binding --clusterrole=cluster-pod-reader --serviceaccount=default:pang
+
+kubectl delete clusterrolebinding cluster-svc-podreader-binding
+```
+
+
+
+**access api int pod**
+
+```shell
+# with binding clusterrole=cluster-pod-reader , 200
 curl --cacert ${CACERT} --header "Authorization: Bearer ${TOKEN}" -X GET ${APISERVER}/api/v1/pods
 
 # without binding clusterrole=cluster-pod-reader , 403
-kubectl delete clusterrolebinding cluster-svc-podreader-binding
 curl --cacert ${CACERT} --header "Authorization: Bearer ${TOKEN}" -X GET ${APISERVER}/api/v1/pods
 ```
 
