@@ -6,14 +6,22 @@ API Server 的访问主体大体可以分为2类，都可以通过RBAC进行资�
 
 - User, 在k8s集群外对API进行访问
   - 不是API资源类型
-  - 由 k8s的CA认证颁发的User，才是合法用户
+  - 由 k8s集群的CA认证颁发的User，才是合法用户
+  - 需要手动生成 crt, key
 - ServiceAccount，在集群内部对API进行访问(Pod内)
   - API资源类型
-    - 可以通过API创建
+    - 可以通过API创建，自动生成 crt, token
     - 可以通过API获取一个ServiceAccount的Token，用于请求访问认证
   - 在创建Pod时，可以指定serviceaccount，默认是 default/default
+    - pod创建成功后，serviceaccount, crt, token 在 pod内部可以获取到
 
 
+
+可以使用 client库进行API访问，也可以直接使用curl进行访问
+访问API时，需要 crt + token 或者 crt + key
+
+- `curl --cert <crt> --key <kubectl.key> -X GET ${APISERVER}/api`
+- `curl --cacert <crt> --header "Authorization: Bearer <TOKEN> -X GET ${APISERVER}/api`
 
 
 
@@ -66,7 +74,7 @@ curl --cert ./kubectl.crt --key ./kubectl.key -k $APISERVER/api/v1/pods
 openssl genrsa -out pang.key 2048
 openssl req -new -key pang.key -out pang.csr -subj "/CN=pang/ O=examplegroup"
 
-# kubernetes对密钥对进行签名
+# kubernetes CA 对用户进行签发
 openssl x509 -req -in pang.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out pang.crt
 
 # check
