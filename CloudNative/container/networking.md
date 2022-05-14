@@ -6,12 +6,17 @@
 
 - Bridge mode
 - Host mode
-- Container mode  (k8s intro-Pod network)
+- Container mode
+  - k8s intro-Pod network： 
+    - `pause` container create a network namespace
+    - other containers join the network namespace
+
 - No networking
 
 ## Multi-Host Container Networking
 
 **options**
+
 - Flannel
 - Weave Net
 - Project Calico
@@ -71,7 +76,10 @@ CNI_COMMAND=ADD \
 ## Kubernetes Networking
 ### Kubernetes Networking Overview
 **Three fundamental requirements**
-- Containers can communicate with all other containers without NAT.
+- Pods can communicate with all other Pods without NAT.
+  - assigns an overall address space for the bridges on each node, assigns the bridges addresses within that space, based on the node the bridge is built on.  (any address in the 10.0.0.0/8 range is not NAT’d by default)
+  - adds routing rules to the gateway telling it how packets destined for each bridge should be routed.
+
 - Nodes can communicate with all containers (and vice versa) without NAT.
 - The IP a container sees itself is the same IP as others see it.
 
