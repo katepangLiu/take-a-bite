@@ -3,9 +3,10 @@
 ## Single-Host Container Networking
 
 **Modes for Docker Networking**
+
 - Bridge mode
 - Host mode
-- Container mode
+- Container mode  (k8s intro-Pod network)
 - No networking
 
 ## Multi-Host Container Networking
