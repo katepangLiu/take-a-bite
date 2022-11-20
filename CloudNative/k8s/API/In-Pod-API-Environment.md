@@ -10,7 +10,7 @@
 
 
 
-## /var/run/secrets/kubernetes.io/serviceaccount/token
+`/var/run/secrets/kubernetes.io/serviceaccount/token`
 
 ```
 eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ5blZudVVqYlJmR2F2ZDdVcExFRC1HN3ZvcEI4NzNCTjhQMU1ERXdCY0kifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjc5NTMyNTg1LCJpYXQiOjE2NDc5OTY1ODUsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0IiwicG9kIjp7Im5hbWUiOiJuZ2lueCIsInVpZCI6IjA0Y2FjYTNmLTRlNDktNDEyNi1hM2QzLTM4MzQwZDMzYjFkYSJ9LCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiZGVmYXVsdCIsInVpZCI6IjYyN2NmYzQwLWYwYmMtNGIyMC1hM2M2LTU5YmNiMjc0MTlhZiJ9LCJ3YXJuYWZ0ZXIiOjE2NDgwMDAxOTJ9LCJuYmYiOjE2NDc5OTY1ODUsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.Ga_0M6KtZjlXK0D0MDTCTTJkCtRMPuWUk4PrsTQ97EHJhqFbPEIAZ44f8E4CiOg2YG7yXaReMuAD945To0111nj2qsvv-dBFUBhnHc3v9h2UUvVgl3gJ-U0opLeINFPsJrgY3cMswVjAoslKzTPKLHvgo0bjaMUN3uQNDyeRWqqyPBL5Mc7O44DMJb6kmn4fDCFpVSf7tfInqIvjEf5CGG8m9iA6tb6JzrtKAVzeYayAUXnXoixkW3UPw1PkGr5j716qTh7touWj2fnl_Ctcam3fWcq_XUkGs-PnYFZyWIwknjrH6AEz_85xI9paqQoGN5ji5iNM3hFFfJT0NDWrCg
@@ -18,9 +18,7 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ5blZudVVqYlJmR2F2ZDdVcExFRC1HN3ZvcEI4NzNCTjhQMU1E
 
 
 
-
-
-## /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+`/var/run/secrets/kubernetes.io/serviceaccount/ca.crt`
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -41,5 +39,6 @@ zjfiVEFd4mcB8f2uxMBPyYioi3BN2i32wyZXKnPgK6L2r1fpH0JVjP7dfbIQbM0d
 N4SQ+tjM03aHi4rTHkSyawJaL2g5fXx2lMgayVAKXBvQbCAis+hiIJ0hO6RfeZkA
 TKQBKBWB8aNkxSzeN2qMTggKFsDF0kAV+C/yVJg=
 -----END CERTIFICATE-----
+
 ```
 
