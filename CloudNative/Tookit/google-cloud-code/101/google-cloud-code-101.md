@@ -4,7 +4,7 @@
 
 Official website: https://cloud.google.com/code
 
-
+Cloud Code is a [Skaffold](https://skaffold.dev/) IDE extenstion for [vscode]() and  [JetBrains IDEs](https://cloud.google.com/code/docs/intellij/quickstart-k8s#installing_the_plugin).
 
 ## Prepare
 
